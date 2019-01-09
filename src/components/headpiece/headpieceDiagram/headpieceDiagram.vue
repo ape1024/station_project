@@ -1,6 +1,6 @@
 <template>
     <div class="headpieceDiagram">
-        <p class="headpieceDiagramP">每日发送量对比</p>
+        <p class="headpieceDiagramP">{{headpieceText}}</p>
         <!--<div class="headpieceDiagramDiv"></div>-->
         <div id="myChart" :style="{ width: '1240px', height: '220px' }"></div>
     </div>
@@ -9,6 +9,7 @@
 <script>
 export default {
   name: 'headpieceDiagram',
+  props: ['headpieceText', 'headpieceindex', 'headpieceSeries', 'headpieceXaxisData'],
   data () {
     return {
     }
@@ -36,7 +37,7 @@ export default {
         },
         xAxis: {
           type: 'category',
-          show: true,
+          show: false,
           boundaryGap: true,
           splitLine: {
             show: false,
@@ -46,7 +47,7 @@ export default {
               type: 'solid'
             }
           },
-          data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+          data: this.headpieceXaxisData
         },
         yAxis: {
           type: 'value',
@@ -65,31 +66,12 @@ export default {
           }
         },
         color: ['#EE9D29', '#2CEAA0', '#61bcff'],
-        series: [
-          {
-            name: '3',
-            type: 'line',
-            smooth: true,
-            data: [2000, 100, 200, 300, 90, 230, 210, 144, 544, 666]
-          },
-          {
-            name: '2',
-            type: 'line',
-            smooth: true,
-            data: [100, 200, 191, 234, 290, 330, 310, 244, 5330, 100]
-          },
-          {
-            name: '1',
-            type: 'line',
-            smooth: true,
-            data: [300, 300, 201, 154, 190, 330, 410, 2211, 242, 100]
-          }
-        ]
+        series: this.headpieceSeries
       })
       myChart.dispatchAction({
         type: 'showTip',
         seriesIndex: 2,
-        dataIndex: 0
+        dataIndex: this.headpieceindex
       })
     }
   }

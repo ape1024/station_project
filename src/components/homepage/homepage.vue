@@ -5,11 +5,11 @@
         <div class="section">
             <!--下左折线图-->
             <div class="sectionLeft">
-                <middle></middle>
+                <middle v-if="time.length" :time="time" :waitingRoomPersonnels="waitingRoomPersonnels"></middle>
             </div>
             <!--右侧数据-->
             <div class="sectionRight">
-                <rightSide></rightSide>
+                <rightSide v-if="time.length" :warning="warning" :waitingRoomWarnings="waitingRoomWarnings"></rightSide>
             </div>
         </div>
     </div>
@@ -19,12 +19,38 @@
 import headpiece from '../headpiece/headpiece'
 import middle from '../middle/middle'
 import rightSide from '../rightSide/rightSide'
+import { todayPassenger } from '../../common/api/Interface'
 export default {
   name: 'homepage',
+  data () {
+    return {
+      time: [],
+      waitingRoomPersonnels: [],
+      warning: [],
+      waitingRoomWarnings: []
+    }
+  },
   components: {
     headpiece,
     middle,
     rightSide
+  },
+  created () {
+    this.getData()
+  },
+  methods: {
+    getData () {
+      this.axios.get(todayPassenger()).then((data) => {
+        //  折线图的时间
+        this.time = data.data.data.time
+        //  canvas需要的数据
+        this.waitingRoomPersonnels = data.data.data.waitingRoomPersonnels
+        //  车站预警信息
+        this.warning = data.data.data.warning
+        //  候车室预警信息
+        this.waitingRoomWarnings = data.data.data.waitingRoomWarnings
+      })
+    }
   }
 }
 </script>

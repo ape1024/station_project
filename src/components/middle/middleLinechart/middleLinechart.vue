@@ -1,13 +1,13 @@
 <template>
     <div class="middleLinechart">
-        <div id="Distribution" :style="{ width: '950px', height: '230px' }"></div>
-        <p class="middleLinechartP">时间</p>
+        <div id="Distribution" :style="{ width: '950px', height: '220px' }"></div>
     </div>
 </template>
 
 <script>
 export default {
   name: 'middleLinechart',
+  props: ['middleTime', 'waitingRoom'],
   data () {
     return {
       arrTime: [],
@@ -15,7 +15,7 @@ export default {
     }
   },
   mounted () {
-    this.Initialization()
+    this.assignment()
   },
   methods: {
     Initialization () {
@@ -39,7 +39,8 @@ export default {
         grid: {
           left: '37',
           right: '20',
-          bottom: '10',
+          bottom: '0',
+          top: '38',
           containLabel: true
         },
         xAxis: [
@@ -51,7 +52,7 @@ export default {
               interval: 0,
               rotate: 50
             },
-            data: this.arrTime
+            data: this.middleTime
           }
         ],
         yAxis: [
@@ -64,21 +65,7 @@ export default {
             }
           }
         ],
-        series: [
-          {
-            name: '搜索引擎',
-            type: 'line',
-            stack: '总量',
-            label: {
-              normal: {
-                show: false,
-                position: 'top'
-              }
-            },
-            areaStyle: {normal: {}},
-            data: this.dataBrokenNumber
-          }
-        ]
+        series: this.dataBrokenNumber
       })
     },
     dataSource () {
@@ -102,17 +89,28 @@ export default {
         this.arrTime.push(string)
       }
     },
-    dataBroken () {
-      for (let i = 0; i <= 48; i++) {
-        let num = Math.floor(Math.random() * 500) + 200
-        this.dataBrokenNumber.push(num)
-      }
+    assignment () {
+      this.waitingRoom.forEach((val, index) => {
+        let obj = {
+          name: `${val.name}`,
+          type: 'line',
+          stack: '总量',
+          color: val.color,
+          data: val.personnel,
+          areaStyle: {normal: {}},
+          label: {
+            normal: {
+              show: false,
+              position: 'top'
+            }
+          }
+        }
+        this.dataBrokenNumber.push(obj)
+      })
+      this.Initialization()
     }
   },
   created () {
-    //  时间 5分钟一次
-    this.dataSource()
-    this.dataBroken()
   }
 }
 </script>

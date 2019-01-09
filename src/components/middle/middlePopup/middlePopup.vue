@@ -8,6 +8,7 @@
 <script>
 export default {
   name: 'middlePopup',
+  props: ['personnel', 'middleTime'],
   data () {
     return {
       arrTime: [],
@@ -22,10 +23,12 @@ export default {
       let myChart = this.$echarts.init(document.getElementById('mychart'))
       myChart.setOption({
         title: {
-          text: '北京西站站内人数分布图',
+          text: `${this.personnel.name}`,
+          y: '10',
           x: 'center',
           textStyle: {
-            color: '#fff',
+            // color: `${this.personnel.color}`,
+            color: `#fff`,
             fontStyle: '12px'
           }
         },
@@ -51,7 +54,7 @@ export default {
               interval: 0,
               rotate: 50
             },
-            data: this.arrTime
+            data: this.middleTime
           }
         ],
         yAxis: [
@@ -69,6 +72,7 @@ export default {
             name: '搜索引擎',
             type: 'line',
             stack: '总量',
+            color: this.personnel.color,
             label: {
               normal: {
                 show: false,
@@ -76,7 +80,7 @@ export default {
               }
             },
             areaStyle: {normal: {}},
-            data: this.dataBrokenNumber
+            data: this.personnel.personnel
           }
         ]
       })
@@ -114,8 +118,8 @@ export default {
   },
   created () {
     //  时间 5分钟一次
-    this.dataSource()
-    this.dataBroken()
+    // this.dataSource()
+    // this.dataBroken()
   }
 
 }

@@ -2,11 +2,11 @@
     <div class="middle">
         <!--折线图-->
         <div class="middleLinechart">
-            <middleLinechart></middleLinechart>
+            <middleLinechart v-if="time.length" :middleTime="time" :waitingRoom="waitingRoomPersonnels"></middleLinechart>
         </div>
         <!--canvas-->
         <div class="middleCanvas">
-            <middleCanvas></middleCanvas>
+            <middleCanvas v-if="waitingRoomPersonnels.length" :waitingRoomPersonnels="waitingRoomPersonnels" :middleTime="time"></middleCanvas>
         </div>
     </div>
 </template>
@@ -14,19 +14,17 @@
 <script>
 import middleLinechart from './middleLinechart/middleLinechart'
 import middleCanvas from './middleCanvas/middleCanvas'
+
 export default {
   name: 'middle',
+  props: ['time', 'waitingRoomPersonnels'],
   data () {
     return {
-
     }
   },
   components: {
     middleLinechart,
     middleCanvas
-  },
-  mounted () {
-    console.log(this.data.item)
   }
 }
 </script>
@@ -39,7 +37,7 @@ export default {
       overflow hidden
       .middleLinechart
          width 100%
-         height 250px
+         height 230px
          overflow hidden
          position relative
       .middleCanvas

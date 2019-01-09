@@ -1,10 +1,10 @@
 <template>
     <div class="rightSide">
         <div class="rightSideTop">
-            <rightSideTop></rightSideTop>
+            <rightSideTop :warning="warning"></rightSideTop>
         </div>
         <div class="rightSideBottom">
-            <rightSideBottom></rightSideBottom>
+            <rightSideBottom :waitingRoomWarnings="waitingRoomWarnings"></rightSideBottom>
         </div>
     </div>
 </template>
@@ -14,6 +14,7 @@ import rightSideTop from './rightSideTop/rightSideTop'
 import rightSideBottom from './rightSideBottom/rightSideBottom'
 export default {
   name: 'rightSide',
+  props: ['warning', 'waitingRoomWarnings'],
   components: {
     rightSideTop,
     rightSideBottom

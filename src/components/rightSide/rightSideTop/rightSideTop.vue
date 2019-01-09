@@ -23,16 +23,16 @@
             <li class="summarizingLi">
                 <ul class="summarizingUl">
                     <li class="summarizingli ListHeaderlitext">
-                        <span class="ListHeaderspan">27000</span>
+                        <span class="ListHeaderspan">{{warning.customized}}</span>
                     </li>
                     <li class="summarizingli">
-                        <span class="ListHeaderspan">10000</span>
+                        <span class="ListHeaderspan">{{warning.warning}}</span>
                     </li>
                     <li class="summarizingli">
-                        <span class="ListHeaderspan">10:00</span>
+                        <span class="ListHeaderspan">{{warning.warningTime}}</span>
                     </li>
                     <li class="summarizingli">
-                        <span class="ListHeaderspan">1:1</span>
+                        <span class="ListHeaderspan">{{warning.proportion}}</span>
                     </li>
                 </ul>
             </li>
@@ -42,7 +42,18 @@
 
 <script>
 export default {
-  name: 'rightSideTop'
+  name: 'rightSideTop',
+  props: ['warning'],
+  data () {
+    return {
+
+    }
+  },
+  methods: {
+
+  },
+  created () {
+  }
 }
 </script>
 

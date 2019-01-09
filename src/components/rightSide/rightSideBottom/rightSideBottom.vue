@@ -23,98 +23,22 @@
             </ul>
         </div>
         <ul class="summarizing">
-            <li class="summarizingLi">
+            <li :key="index" v-for="(item, index) in waitingRoomWarnings" class="summarizingLi">
                 <ul class="summarizingUl">
                     <li class="summarizingli ListHeaderlitext">
-                        <span class="ListHeaderspan">27000</span>
+                        <span class="ListHeaderspan">{{item.name}}</span>
                     </li>
                     <li class="summarizingli">
-                        <span class="ListHeaderspan">10000</span>
+                        <span class="ListHeaderspan">{{item.customized}}</span>
                     </li>
                     <li class="summarizingli">
-                        <span class="ListHeaderspan">10000</span>
+                        <span class="ListHeaderspan">{{item.warning}}</span>
                     </li>
                     <li class="summarizingli">
-                        <span class="ListHeaderspan">10:00</span>
+                        <span class="ListHeaderspan">{{item.warningTime}}</span>
                     </li>
                     <li class="summarizingli">
-                        <span class="ListHeaderspan">1:1</span>
-                    </li>
-                </ul>
-            </li>
-            <li class="summarizingLi">
-                <ul class="summarizingUl">
-                    <li class="summarizingli ListHeaderlitext">
-                        <span class="ListHeaderspan">27000</span>
-                    </li>
-                    <li class="summarizingli">
-                        <span class="ListHeaderspan">10000</span>
-                    </li>
-                    <li class="summarizingli">
-                        <span class="ListHeaderspan">10000</span>
-                    </li>
-                    <li class="summarizingli">
-                        <span class="ListHeaderspan">10:00</span>
-                    </li>
-                    <li class="summarizingli">
-                        <span class="ListHeaderspan">1:1</span>
-                    </li>
-                </ul>
-            </li>
-            <li class="summarizingLi">
-                <ul class="summarizingUl">
-                    <li class="summarizingli ListHeaderlitext">
-                        <span class="ListHeaderspan">27000</span>
-                    </li>
-                    <li class="summarizingli">
-                        <span class="ListHeaderspan">10000</span>
-                    </li>
-                    <li class="summarizingli">
-                        <span class="ListHeaderspan">10000</span>
-                    </li>
-                    <li class="summarizingli">
-                        <span class="ListHeaderspan">10:00</span>
-                    </li>
-                    <li class="summarizingli">
-                        <span class="ListHeaderspan">1:1</span>
-                    </li>
-                </ul>
-            </li>
-            <li class="summarizingLi">
-                <ul class="summarizingUl">
-                    <li class="summarizingli ListHeaderlitext">
-                        <span class="ListHeaderspan">27000</span>
-                    </li>
-                    <li class="summarizingli">
-                        <span class="ListHeaderspan">10000</span>
-                    </li>
-                    <li class="summarizingli">
-                        <span class="ListHeaderspan">10000</span>
-                    </li>
-                    <li class="summarizingli">
-                        <span class="ListHeaderspan">10:00</span>
-                    </li>
-                    <li class="summarizingli">
-                        <span class="ListHeaderspan">1:1</span>
-                    </li>
-                </ul>
-            </li>
-            <li class="summarizingLi">
-                <ul class="summarizingUl">
-                    <li class="summarizingli ListHeaderlitext">
-                        <span class="ListHeaderspan">27000</span>
-                    </li>
-                    <li class="summarizingli">
-                        <span class="ListHeaderspan">10000</span>
-                    </li>
-                    <li class="summarizingli">
-                        <span class="ListHeaderspan">10000</span>
-                    </li>
-                    <li class="summarizingli">
-                        <span class="ListHeaderspan">10:00</span>
-                    </li>
-                    <li class="summarizingli">
-                        <span class="ListHeaderspan">1:1</span>
+                        <span class="ListHeaderspan">{{item.proportion}}</span>
                     </li>
                 </ul>
             </li>
@@ -124,7 +48,10 @@
 
 <script>
 export default {
-  name: 'rightSideBottom'
+  name: 'rightSideBottom',
+  props: ['waitingRoomWarnings'],
+  created () {
+  }
 }
 </script>
 

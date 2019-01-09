@@ -17,7 +17,7 @@ export default {
       canvasIndex: ''
     }
   },
-  props: ['array', 'textData', 'arrarIndex', 'diagramHeight'],
+  props: ['array', 'textData', 'arrarIndex', 'diagramHeight', 'personnelAlarm'],
   mounted () {
     this.ergodic(this.array)
   },
@@ -32,14 +32,15 @@ export default {
       let sum = 0
       arr.forEach((val, index) => {
         let coLor = ''
-        if (val.sum >= 80000) {
-          coLor = '#FF0000'
-        } else if (val.sum >= 40000) {
-          coLor = '#FFA500'
-        } else if (val.sum >= 20000) {
-          coLor = '#FFFF00'
-        } else if (val.sum < 20000) {
-          coLor = '#008000'
+        let Proportion = val / this.personnelAlarm
+        if (Proportion <= 0.7) {
+          coLor = 'rgba(0, 255, 132, .4)'
+        } else if (Proportion > 0.7 && Proportion < 0.85) {
+          coLor = 'rgba(255, 240, 0, .4)'
+        } else if (Proportion >= 0.85 && Proportion < 1) {
+          coLor = 'rgba(155, 0, 0, .4)'
+        } else {
+          coLor = 'rgba(255, 0, 0, .4)'
         }
         sum = canvasWidth * index
         ctx.fillStyle = coLor
@@ -61,6 +62,7 @@ export default {
         .assemblyCanvasLeft
             float left
             height 100%
+            font-size 6px
             text-align center
             color #fff
             width 56px

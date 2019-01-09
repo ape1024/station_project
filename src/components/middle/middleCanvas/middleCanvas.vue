@@ -1,9 +1,9 @@
 <template>
     <div class="middleCanvas">
         <div class="diagram">
-            <ul class="diagramUl" ref="elememt">
-                <li :key="index" class="diagramLi" v-for="(item, index) in caption" @click="clickPopup">
-                    <assemblyCanvas :array="arr" :textData="item" :arrarIndex="index" :diagramHeight="diagramUlHeight"></assemblyCanvas>
+            <ul class="diagramUl" ref="monthPie">
+                <li :key="index" class="diagramLi" v-for="(item, index) in caption" @click="clickPopup(item)">
+                    <assemblyCanvas :array="item.personnel" :textData="item" :arrarIndex="index" :diagramHeight="diagramUlHeight" :personnelAlarm="item.personnelAlarm"></assemblyCanvas>
                 </li>
             </ul>
         </div>
@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="middlePopup" v-if="middlePopupBoer">
-            <middlePopup @closeDown="closeDownFun"></middlePopup>
+            <middlePopup @closeDown="closeDownFun" :personnel="personnel" :middleTime="middleTime"></middlePopup>
         </div>
     </div>
 </template>
@@ -24,84 +24,36 @@ import assemblyCanvas from './assemblyCanvas/assemblyCanvas'
 import middlePopup from '../middlePopup/middlePopup'
 export default {
   name: 'middleCanvas',
+  props: ['waitingRoomPersonnels', 'middleTime'],
   components: {
     assemblyCanvas,
     middlePopup
   },
   data () {
     return {
-      caption: [
-        {
-          id: 1,
-          name: '01室'
-        },
-        {
-          id: 2,
-          name: '02室'
-        },
-        {
-          id: 3,
-          name: '03室'
-        },
-        {
-          id: 4,
-          name: '04室'
-        },
-        {
-          id: 5,
-          name: '05室'
-        },
-        {
-          id: 6,
-          name: '06室'
-        },
-        {
-          id: 7,
-          name: '07室'
-        },
-        {
-          id: 8,
-          name: '08室'
-        },
-        {
-          id: 9,
-          name: '09室'
-        },
-        {
-          id: 10,
-          name: '10室'
-        },
-        {
-          id: 11,
-          name: '11室'
-        },
-        {
-          id: 12,
-          name: '12室'
-        },
-        {
-          id: 13,
-          name: '13室'
-        }
-      ],
+      caption: [],
       captionColor: [
-        '#71D89A',
-        '#D87179',
-        '#71D8CE',
-        '#D89C71',
-        '#71AED8',
-        '#D8CF71',
-        '#717AD8',
-        '#ADD871',
-        '#9C71D8',
-        '#79D871',
-        '#CF71D8',
-        '#85B681',
-        '#D871AD'
+        'rgba(113, 216, 154, .6)',
+        'rgba(113, 216, 206, .6)',
+        'rgba(113, 174, 216, .6)',
+        'rgba(113, 122, 216, .6)',
+        'rgba(156, 113, 216, .6)',
+        'rgba(207, 113, 216, .6)',
+        'rgba(216, 113, 176, .6)',
+        'rgba(228, 100, 132, .6)',
+        'rgba(242, 153, 132, .6)',
+        'rgba(243, 191, 101, .6)',
+        'rgba(229, 215, 75, .6)',
+        'rgba(173, 239, 82, .6)',
+        'rgba(87, 226, 192, .6)',
+        'rba(107, 230, 235, .6)',
+        'rgba(97, 197, 255, .6)',
+        'rgba(72, 141, 255, .6)'
       ],
       arr: [],
       middlePopupBoer: false,
-      diagramUlHeight: 0
+      diagramUlHeight: 0,
+      personnel: []
     }
   },
   mounted () {
@@ -118,19 +70,21 @@ export default {
       }
     },
     //  弹窗
-    clickPopup () {
+    clickPopup (data) {
+      this.personnel = data
       this.middlePopupBoer = true
     },
     closeDownFun () {
       this.middlePopupBoer = false
     },
     setHeight () {
-      //  首先获取ul的高度 除以 13
-      let heightCss = 280
-      this.diagramUlHeight = heightCss / 13 - 2
+      //  首先获取ul的高度 除以
+      let heightCss = 296
+      this.diagramUlHeight = heightCss / this.caption.length - 2
     }
   },
   created () {
+    this.caption = this.waitingRoomPersonnels
     this.caption.forEach((val, index) => {
       val.color = this.captionColor[index]
     })
@@ -158,7 +112,7 @@ export default {
                overflow hidden
                flex-wrap wrap
                position relative
-               height 280px
+               height 296px
                width 100%
                .diagramLi
                    cursor pointer

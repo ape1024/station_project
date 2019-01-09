@@ -38,7 +38,7 @@ export default {
         } else if (Proportion > 0.7 && Proportion < 0.85) {
           coLor = 'rgba(255, 240, 0, .4)'
         } else if (Proportion >= 0.85 && Proportion < 1) {
-          coLor = 'rgba(155, 0, 0, .4)'
+          coLor = 'rgba(255, 120, 0, .4)'
         } else {
           coLor = 'rgba(255, 0, 0, .4)'
         }
@@ -62,7 +62,7 @@ export default {
         .assemblyCanvasLeft
             float left
             height 100%
-            font-size 6px
+            font-size 12px
             text-align center
             color #fff
             width 56px

@@ -36,10 +36,14 @@ export default {
     rightSide
   },
   created () {
+    setInterval(() => {
+      this.getData()
+    }, 60000)
     this.getData()
   },
   methods: {
     getData () {
+      console.log('/1')
       this.axios.get(todayPassenger()).then((data) => {
         //  折线图的时间
         this.time = data.data.data.time
@@ -60,6 +64,12 @@ export default {
     width 1260px
     overflow hidden
     position relative
+    -webkit-touch-callout none
+    -webkit-user-select none
+    -khtml-user-select none
+    -moz-user-select none
+    -ms-user-select none
+    user-select none
     .section
       width 100%
       height 552px

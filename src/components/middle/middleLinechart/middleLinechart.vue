@@ -26,7 +26,8 @@ export default {
           x: 'center',
           textStyle: {
             color: '#fff',
-            fontStyle: '12px'
+            fontWeight: 'lighter',
+            fontSize: '16'
           }
         },
         tooltip: {
@@ -93,6 +94,8 @@ export default {
       this.waitingRoom.forEach((val, index) => {
         let obj = {
           name: `${val.name}`,
+          symbol: 'none',
+          smooth: true,
           type: 'line',
           stack: '总量',
           color: val.color,

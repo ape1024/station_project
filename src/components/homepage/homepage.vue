@@ -43,7 +43,6 @@ export default {
   },
   methods: {
     getData () {
-      console.log('/1')
       this.axios.get(todayPassenger()).then((data) => {
         //  折线图的时间
         this.time = data.data.data.time

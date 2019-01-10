@@ -29,7 +29,7 @@ export default {
           textStyle: {
             // color: `${this.personnel.color}`,
             color: `#fff`,
-            fontStyle: '12px'
+            fontStyle: '12'
           }
         },
         tooltip: {
@@ -69,9 +69,10 @@ export default {
         ],
         series: [
           {
-            name: '搜索引擎',
+            name: '人数',
             type: 'line',
-            stack: '总量',
+            smooth: true,
+            symbol: 'none',
             color: this.personnel.color,
             label: {
               normal: {
@@ -80,7 +81,27 @@ export default {
               }
             },
             areaStyle: {normal: {}},
-            data: this.personnel.personnel
+            data: this.personnel.personnel,
+            markLine: {
+              data: [
+                [
+                  { name: '预警人数起点', xAxis: 0, yAxis: this.personnel.personnelAlarm, symbol: 'circle' }, { name: '预警人数终点', xAxis: this.middleTime.length - 1, yAxis: this.personnel.personnelAlarm, symbol: 'arrow' }
+                ]
+              ],
+              label: {
+                normal: {
+                  show: true,
+                  position: 'middle',
+                  formatter: '预警线'
+                }
+              },
+              lineStyle: {
+                normal: {
+                  type: 'solid',
+                  color: '#cc0001'
+                }
+              }
+            }
           }
         ]
       })

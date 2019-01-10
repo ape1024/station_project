@@ -75,4 +75,6 @@ export default {
     color $color-blue
 .tabulationUl .tabulationLi:first-child
   width 70px!important
+/*.tabulationLi:first-child:before*/
+  /*content: '●'*/
 </style>

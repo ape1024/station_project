@@ -46,7 +46,7 @@ export default {
         'rgba(229, 215, 75, .6)',
         'rgba(173, 239, 82, .6)',
         'rgba(87, 226, 192, .6)',
-        'rba(107, 230, 235, .6)',
+        'rgba(107, 230, 235, .6)',
         'rgba(97, 197, 255, .6)',
         'rgba(72, 141, 255, .6)'
       ],
@@ -79,7 +79,7 @@ export default {
     },
     setHeight () {
       //  首先获取ul的高度 除以
-      let heightCss = 296
+      let heightCss = 456
       this.diagramUlHeight = heightCss / this.caption.length - 2
     }
   },
@@ -106,18 +106,24 @@ export default {
         .diagram
             overflow hidden
             position relative
-            display flex
             margin 0 20px 0 6px
            .diagramUl
-               overflow hidden
-               flex-wrap wrap
+             display flex
+             flex-direction column
+             align-content flex-start
+             box-sizing border-box
+             overflow hidden
+             position relative
+             height 456px
+             width 100%
+             .diagramLi
+               cursor pointer
                position relative
-               height 296px
+               overflow hidden
+               box-sizing border-box
+               margin-bottom 2px
+               height 100%
                width 100%
-               .diagramLi
-                   cursor pointer
-                   margin-bottom 2px
-                   width 100%
         .fastener
             margin-top 10px
             overflow hidden

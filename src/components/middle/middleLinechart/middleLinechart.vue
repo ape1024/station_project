@@ -1,23 +1,46 @@
 <template>
     <div class="middleLinechart">
-        <div id="Distribution" :style="{ width: '950px', height: '220px' }"></div>
+        <div id="Distribution" :style="{ width: '1330px', height: '340px' }"></div>
     </div>
 </template>
 
 <script>
+const INTERVAL = 60
 export default {
   name: 'middleLinechart',
   props: ['middleTime', 'waitingRoom'],
   data () {
     return {
       arrTime: [],
-      dataBrokenNumber: []
+      arrdata: [],
+      interval: 0,
+      dataBrokenNumber: [],
+      middleTimeArr: []
     }
   },
   mounted () {
-    this.assignment()
+    // this.dataSource()
+    // this.Arrdata()
+    this.judgement()
   },
   methods: {
+    judgement () {
+      // for (let i = 0; i < 5; i++) {
+      //   this.middleTime.forEach((val) => {
+      //     this.middleTimeArr.push(val)
+      //   })
+      // }
+      // console.log('/')
+      // console.log(this.middleTimeArr.length)
+      let arrLength = this.middleTime.length
+      console.log(arrLength)
+      if (arrLength > INTERVAL) {
+        this.interval = Math.round(arrLength / INTERVAL)
+      } else {
+        this.interval = 0
+      }
+      this.assignment()
+    },
     Initialization () {
       let myChart = this.$echarts.init(document.getElementById('Distribution'))
       myChart.setOption({
@@ -27,7 +50,7 @@ export default {
           textStyle: {
             color: '#fff',
             fontWeight: 'lighter',
-            fontSize: '16'
+            fontSize: '21'
           }
         },
         tooltip: {
@@ -50,7 +73,7 @@ export default {
             boundaryGap: false,
             axisLabel: {
               color: '#fff',
-              interval: 0,
+              interval: this.interval,
               rotate: 50
             },
             data: this.middleTime
@@ -71,13 +94,13 @@ export default {
     },
     dataSource () {
       //  288
-      for (let i = 0; i <= 48; i++) {
+      for (let i = 0; i <= 1440; i++) {
         let string = ''
-        let division = i * 30 / 60
+        let division = i * 1 / 60
         let number = Math.round(division) === division ? 1 : 0
         if (number === 0) {
           let Newnumber = ''
-          let Minute = (i * 30) % 60
+          let Minute = (i * 1) % 60
           let compare = Math.floor(division)
           Newnumber = compare >= 10 ? compare : `0${compare}`
           Minute = Minute >= 10 ? Minute : `0${Minute}`
@@ -90,7 +113,17 @@ export default {
         this.arrTime.push(string)
       }
     },
+    Arrdata () {
+      let arr = []
+      for (let i = 0; i <= 1; i++) {
+        arr.push(Math.random() * 1000 + 500)
+      }
+      this.arrdata = arr
+      // this.interval = 846 / 70
+      this.Initialization()
+    },
     assignment () {
+      //  this.waitingRoom.forEach((val, index) => {
       this.waitingRoom.forEach((val, index) => {
         let obj = {
           name: `${val.name}`,

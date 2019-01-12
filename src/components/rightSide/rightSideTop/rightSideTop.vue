@@ -66,16 +66,16 @@ export default {
         .rightSidetopHead
             border-left 5px solid #e20001
             padding-left 4px
-            font-size 14px
+            font-size 21px
             text-align left
             color #fff
-            height 14px
+            height 21px
         .ListHeader
-            margin 10px 0
-            height 10px
-            line-height 10px
+            margin 20px 0
+            height 26px
+            line-height 26px
             width 100%
-            font-size 12px
+            font-size 21px
             overflow hidden
             .ListHeaderUl
                 float right
@@ -90,10 +90,7 @@ export default {
                     height 100%
                     float left
                     .ListHeaderspan
-                        font-size 12px
-                        -webkit-transform scale(0.6)
-                        transform scale(0.6)
-
+                        font-size 21px
         .summarizing
             overflow hidden
             position relative
@@ -106,15 +103,14 @@ export default {
                    float right
                    width 98%
                    background #EE9D29
-                   font-size 12px
                    height 100%
                    position relative
                    overflow hidden
                    .summarizingli
                        float left
-                       font-size 12px
+                       font-size 21px
                        text-align center
-                       line-height 20px
+                       line-height 21px
                        width 25%
     .ListHeaderlitext
         text-align left!important

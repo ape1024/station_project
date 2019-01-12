@@ -1,10 +1,12 @@
 <template>
-    <div class="assemblyCanvas" :style="{ height: diagramHeight + 'px', lineHeight: diagramHeight + 'px' }">
+    <div class="assemblyCanvas">
         <div class="assemblyCanvasLeft" :style="{ background: textData.color }">
             {{textData.name}}
         </div>
-        <div class="assemblyCanvasRight" >
-            <canvas :id="canvasIndex" width="864" :height="diagramHeight"></canvas>
+        <div class="assemblyCanvasRight" ref="assembWithd">
+            <div class="assemblyCanvasRightItem">
+              <canvas ref="canvasIndex"></canvas>
+            </div>
         </div>
     </div>
 </template>
@@ -14,7 +16,9 @@ export default {
   name: 'assemblyCanvas',
   data () {
     return {
-      canvasIndex: ''
+      canvasIndex: '',
+      canvasWidth: '',
+      canvasHeight: ''
     }
   },
   props: ['array', 'textData', 'arrarIndex', 'diagramHeight', 'personnelAlarm'],
@@ -25,9 +29,15 @@ export default {
   methods: {
     //  遍历canvas 1440份
     ergodic (arr) {
+      console.log('/')
+      console.log()
       //  单个canvas的宽度
-      let canvasWidth = 864 / 48
-      let c = document.getElementById(`${this.canvasIndex}`)
+      this.canvasWidth = this.$refs.assembWithd.offsetWidth
+      this.canvasHeight = this.$refs.assembWithd.offsetHeight
+      let canvasWidth = this.$refs.assembWithd.clientWidth / this.array.length
+      let c = this.$refs.canvasIndex
+      c.width = this.canvasWidth
+      c.height = this.canvasHeight
       let ctx = c.getContext('2d')
       let sum = 0
       arr.forEach((val, index) => {
@@ -44,7 +54,7 @@ export default {
         }
         sum = canvasWidth * index
         ctx.fillStyle = coLor
-        ctx.fillRect(sum, -5, canvasWidth, 30)
+        ctx.fillRect(sum, 0, canvasWidth, this.canvasHeight)
       })
     }
   },
@@ -56,20 +66,30 @@ export default {
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
     .assemblyCanvas
+        display flex
         overflow hidden
         position relative
         width 100%
+        height 100%
         .assemblyCanvasLeft
-            float left
+            flex-shrink 0
+            box-sizing border-box
             height 100%
-            font-size 12px
-            text-align center
+            font-size 21px
+            display flex
+            justify-content center
+            align-items center
             color #fff
             width 56px
         .assemblyCanvasRight
-            width 864px
+            position relative
+            width 100%
             height 100%
             overflow hidden
-            float right
-
+            .assemblyCanvasRightItem
+              position absolute
+              left 0
+              right 0
+              top 0
+              bottom 0
 </style>

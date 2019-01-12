@@ -37,7 +37,7 @@ export default {
       overflow hidden
       .middleLinechart
          width 100%
-         height 230px
+         height 350px
          overflow hidden
          position relative
       .middleCanvas

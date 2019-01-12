@@ -46,6 +46,17 @@ export default {
           this.headpieceindex = data.index - 1
           //  折线图信息
           this.headpieceSeries = data.graph.series
+          console.log(this.headpieceSeries)
+          let itemstyle = {
+            normal: {
+              lineStyle: {
+                width: 4
+              }
+            }
+          }
+          this.headpieceSeries.forEach((val) => {
+            val.itemStyle = itemstyle
+          })
           //  折线图 x轴信息
           this.headpieceXaxisData = data.graph.xAxisData
           //  列表信息tableList
@@ -60,15 +71,14 @@ export default {
 <style scoped lang="stylus" rel="stylesheet/stylus">
 .headpiece
   width 100%
-  height 348px
-  margin-bottom 20px
+  height 525px
   background url("../../assets/headpiece.png") no-repeat
   background-size cover cover
   position relative
   overflow hidden
   .headpieceTop
     width 100%
-    height 230px
+    height 340px
     overflow hidden
     position relative
   .headpieceBottom

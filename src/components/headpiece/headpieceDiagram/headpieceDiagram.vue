@@ -2,7 +2,7 @@
     <div class="headpieceDiagram">
         <p class="headpieceDiagramP">{{headpieceText}}</p>
         <!--<div class="headpieceDiagramDiv"></div>-->
-        <div id="myChart" :style="{ width: '1240px', height: '220px' }"></div>
+        <div id="myChart" :style="{ width: '1900', height: '340px' }"></div>
     </div>
 </template>
 
@@ -24,14 +24,15 @@ export default {
         tooltip: {
           trigger: 'axis',
           show: true,
-          triggerOn: 'none'
+          triggerOn: 'none',
+          extraCssText: 'font-size: 21px;'
         },
         legend: {
           show: false
         },
         grid: {
           left: '30',
-          right: '0%',
+          right: '20',
           bottom: '0%',
           containLabel: true
         },
@@ -43,6 +44,7 @@ export default {
             show: false,
             lineStyle: {
               color: ['#61bcff'],
+              fontSize: '21',
               width: 1,
               type: 'solid'
             }
@@ -54,13 +56,14 @@ export default {
           show: true,
           boundaryGap: true,
           axisLabel: {
-            color: '#fff'
+            color: '#fff',
+            fontSize: '21'
           },
           splitLine: {
             show: true,
             lineStyle: {
               color: ['#61bcff'],
-              width: 1,
+              width: 2,
               type: 'solid'
             }
           }
@@ -80,7 +83,7 @@ export default {
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
 .headpieceDiagram
-    width 1240px
+    width 100%
     margin 0 10px
     position relative
     overflow hidden
@@ -95,10 +98,9 @@ export default {
        position absolute
        top 0
        left 0
-       height 30px
-       line-height 30px
+       height 46px
+       line-height 46px
        text-align center
-       font-size 16px
+       font-size 24px
        color #fff
-       width 120px
 </style>

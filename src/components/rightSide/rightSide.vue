@@ -24,13 +24,14 @@ export default {
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
     .rightSide
-       width 280px
+       width 500px
        margin 10px 20px 0 0
+       font-size 21px
        position relative
        overflow hidden
        .rightSidehead
            width 100%
-           font-size 12px
+           font-size 21px
            position relative
            overflow hidden
            .manual

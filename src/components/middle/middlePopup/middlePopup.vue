@@ -1,7 +1,7 @@
 <template>
     <div class="middlePopup">
         <img class="closeDown" src="../../../assets/closeDown.png" alt="" @click="closeDownClick">
-        <div id="mychart" :style="{ width: '930px', height: '260px' }"></div>
+        <div id="mychart" :style="{ width: '1300px', height: '450px' }"></div>
     </div>
 </template>
 
@@ -29,7 +29,8 @@ export default {
           textStyle: {
             // color: `${this.personnel.color}`,
             color: `#fff`,
-            fontStyle: '12'
+            fontWeight: 'lighter',
+            fontSize: '21'
           }
         },
         tooltip: {

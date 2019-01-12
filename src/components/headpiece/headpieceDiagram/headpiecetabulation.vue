@@ -1,10 +1,17 @@
 <template>
     <div class="tabulation" ref="companyStyle">
         <ul ref="companyColor" :key="index" class="tabulationUl" v-for="(item, index) in quantum">
-            <li :key="$index" v-for="(data, $index) in item" class="tabulationLi" :style="{ width: NewWidth }">
+            <li :key="$index" v-for="(data, $index) in item" class="tabulationLi">
               {{data}}
             </li>
         </ul>
+      <!--<div style="position: fixed;left: 0;-->
+<!--right: 0;top: 0; bottom: 0;background: #fff; z-index: 1000000;display: none">-->
+        <!--<div style="width: 800px;height: 200px; display: flex;flex-direction: column">-->
+          <!--<div style="width: 100%;height: 100px;flex-shrink: 0;box-sizing: border-box;border: 1px solid #000"></div>-->
+          <!--<div :key="t" v-for="t in 3" style="width: 100%;height: 100%;box-sizing: border-box;border: 1px solid #000"></div>-->
+        <!--</div>-->
+      <!--</div>-->
     </div>
 </template>
 
@@ -30,8 +37,8 @@ export default {
   methods: {
     //  设置每个li的宽度
     customWidth () {
-      let heightCss = this.$refs.companyStyle.clientWidth
-      this.NewWidth = (((heightCss - 72 - 10) / (this.quantum[0].length - 1)) - 2) + 'px'
+      // let heightCss = this.$refs.companyStyle.clientWidth
+      // this.NewWidth = (((heightCss - 72 - 10) / (this.quantum[0].length - 1)) - 2) + 'px'
       // this.$refs.companyStyle.children.forEach((val) => {
       // })
       this.dataList = this.quantum
@@ -49,20 +56,23 @@ export default {
 <style scoped lang="stylus" rel="stylesheet/stylus">
 .tabulation
    overflow hidden
-   margin-left 10px
+   margin 0 10px
    position relative
    .tabulationUl
+     display flex
      overflow hidden
      position relative
      width 100%
     .tabulationLi
+        width 100%
         overflow hidden
         position relative
         text-align center
-        height 24px
+        height 42px
         margin 1px
-        line-height 24px
-        float left
+        font-size 21px
+        box-sizing border-box
+        line-height 42px
   .tabulationUl li:nth-child(odd)
     background rgba(41,173,241,0.4)
   .tabulationUl li:nth-child(even)
@@ -75,6 +85,7 @@ export default {
     color $color-blue
 .tabulationUl .tabulationLi:first-child
   width 70px!important
+  flex-shrink 0
 /*.tabulationLi:first-child:before*/
   /*content: '●'*/
 </style>

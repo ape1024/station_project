@@ -16,15 +16,15 @@ export default {
 
 <style lang="stylus" rel="stylesheet/stylus">
 html, body
-  width 1260px
-  height 920px
+  width 1920px
+  height 852px
   overflow hidden
   position relative
-  background url("../src/assets/subject_background.png") no-repeat
-  background-size cover
+  background #071321
 #app
-  width 1260px
-  height 100%
+  width 1900px
+  margin 10px
+  /*height 100%*/
   font-family 'Avenir', Helvetica, Arial, sans-serif
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale

@@ -2,7 +2,7 @@
     <div class="headpieceDiagram">
         <p class="headpieceDiagramP">{{headpieceText}}</p>
         <!--<div class="headpieceDiagramDiv"></div>-->
-        <div id="myChart" :style="{ width: '1900', height: '340px' }"></div>
+        <div id="myChart" :style="{ width: '770px', height: '200px' }"></div>
     </div>
 </template>
 
@@ -25,15 +25,15 @@ export default {
           trigger: 'axis',
           show: true,
           triggerOn: 'none',
-          extraCssText: 'font-size: 21px;'
+          extraCssText: 'font-size: 12px;'
         },
         legend: {
           show: false
         },
         grid: {
-          left: '30',
-          right: '20',
-          bottom: '0%',
+          left: '60',
+          right: '0',
+          bottom: '0',
           containLabel: true
         },
         xAxis: {
@@ -44,7 +44,7 @@ export default {
             show: false,
             lineStyle: {
               color: ['#61bcff'],
-              fontSize: '21',
+              fontSize: '12',
               width: 1,
               type: 'solid'
             }
@@ -56,14 +56,15 @@ export default {
           show: true,
           boundaryGap: true,
           axisLabel: {
+            show: false,
             color: '#fff',
-            fontSize: '21'
+            fontSize: '12'
           },
           splitLine: {
             show: true,
             lineStyle: {
-              color: ['#61bcff'],
-              width: 2,
+              color: ['rgba(41,174,241,.6)'],
+              width: 1,
               type: 'solid'
             }
           }
@@ -97,10 +98,10 @@ export default {
     .headpieceDiagramP
        position absolute
        top 0
-       left 0
-       height 46px
-       line-height 46px
+       left 10px
+       height 30px
+       line-height 30px
        text-align center
-       font-size 24px
+       font-size 16px
        color #fff
 </style>

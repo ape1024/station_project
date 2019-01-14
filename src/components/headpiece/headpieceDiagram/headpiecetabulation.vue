@@ -56,7 +56,7 @@ export default {
 <style scoped lang="stylus" rel="stylesheet/stylus">
 .tabulation
    overflow hidden
-   margin 0 10px
+   margin 0 20px
    position relative
    .tabulationUl
      display flex
@@ -68,11 +68,11 @@ export default {
         overflow hidden
         position relative
         text-align center
-        height 42px
+        height 28px
         margin 1px
-        font-size 21px
+        font-size 12px
         box-sizing border-box
-        line-height 42px
+        line-height 28px
   .tabulationUl li:nth-child(odd)
     background rgba(41,173,241,0.4)
   .tabulationUl li:nth-child(even)
@@ -84,7 +84,7 @@ export default {
   .tabulationLiHeaderSpan_three
     color $color-blue
 .tabulationUl .tabulationLi:first-child
-  width 70px!important
+  width 50px!important
   flex-shrink 0
 /*.tabulationLi:first-child:before*/
   /*content: '●'*/

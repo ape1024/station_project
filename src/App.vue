@@ -15,15 +15,16 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
+  @import "common/stylus/variable"
 html, body
-  width 1920px
-  height 852px
+  width $width-total
+  height $height-total
   overflow hidden
   position relative
-  background #071321
+  background url("../src/assets/bottom_background.png") no-repeat
 #app
-  width 1900px
-  margin 10px
+  width $width-total
+  height 100%
   /*height 100%*/
   font-family 'Avenir', Helvetica, Arial, sans-serif
   -webkit-font-smoothing antialiased

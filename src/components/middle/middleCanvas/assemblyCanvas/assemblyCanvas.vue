@@ -29,8 +29,6 @@ export default {
   methods: {
     //  遍历canvas 1440份
     ergodic (arr) {
-      console.log('/')
-      console.log()
       //  单个canvas的宽度
       this.canvasWidth = this.$refs.assembWithd.offsetWidth
       this.canvasHeight = this.$refs.assembWithd.offsetHeight
@@ -75,12 +73,12 @@ export default {
             flex-shrink 0
             box-sizing border-box
             height 100%
-            font-size 21px
+            font-size 12px
             display flex
             justify-content center
             align-items center
             color #fff
-            width 56px
+            width 50px
         .assemblyCanvasRight
             position relative
             width 100%

@@ -106,7 +106,7 @@ export default {
         .diagram
             overflow hidden
             position relative
-            margin 0 20px 0 6px
+            margin 4px 0 0 4px
            .diagramUl
              display flex
              flex-direction column
@@ -114,7 +114,7 @@ export default {
              box-sizing border-box
              overflow hidden
              position relative
-             height 456px
+             height 280px
              width 100%
              .diagramLi
                cursor pointer
@@ -140,9 +140,9 @@ export default {
         .middlePopup
             position absolute
             top 0
-            left 6px
+            left 2px
             bottom 0
-            right 6px
+            right 0
             background rgba(20, 40, 86,.94)
             overflow hidden
 </style>

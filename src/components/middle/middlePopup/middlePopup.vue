@@ -1,7 +1,7 @@
 <template>
     <div class="middlePopup">
         <img class="closeDown" src="../../../assets/closeDown.png" alt="" @click="closeDownClick">
-        <div id="mychart" :style="{ width: '1300px', height: '450px' }"></div>
+        <div id="mychart" :style="{ width: '960px', height: '280px' }"></div>
     </div>
 </template>
 
@@ -30,7 +30,7 @@ export default {
             // color: `${this.personnel.color}`,
             color: `#fff`,
             fontWeight: 'lighter',
-            fontSize: '21'
+            fontSize: '12'
           }
         },
         tooltip: {

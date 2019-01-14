@@ -32,12 +32,12 @@ export default {
 <style scoped lang="stylus" rel="stylesheet/stylus">
     .middle
       width 100%
-      margin-top 20px
+      margin-top 10px
       position relative
       overflow hidden
       .middleLinechart
          width 100%
-         height 350px
+         margin-bottom 10px
          overflow hidden
          position relative
       .middleCanvas

@@ -1,6 +1,6 @@
 <template>
     <div class="middleLinechart">
-        <div id="Distribution" :style="{ width: '1330px', height: '340px' }"></div>
+        <div id="Distribution" :style="{ width: '954px', height: '235px' }"></div>
     </div>
 </template>
 
@@ -33,7 +33,6 @@ export default {
       // console.log('/')
       // console.log(this.middleTimeArr.length)
       let arrLength = this.middleTime.length
-      console.log(arrLength)
       if (arrLength > INTERVAL) {
         this.interval = Math.round(arrLength / INTERVAL)
       } else {
@@ -50,7 +49,7 @@ export default {
           textStyle: {
             color: '#fff',
             fontWeight: 'lighter',
-            fontSize: '21'
+            fontSize: '16'
           }
         },
         tooltip: {
@@ -61,8 +60,8 @@ export default {
           show: false
         },
         grid: {
-          left: '37',
-          right: '20',
+          left: '14',
+          right: '4',
           bottom: '0',
           top: '38',
           containLabel: true

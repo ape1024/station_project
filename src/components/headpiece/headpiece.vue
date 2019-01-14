@@ -46,7 +46,6 @@ export default {
           this.headpieceindex = data.index - 1
           //  折线图信息
           this.headpieceSeries = data.graph.series
-          console.log(this.headpieceSeries)
           let itemstyle = {
             normal: {
               lineStyle: {
@@ -71,14 +70,14 @@ export default {
 <style scoped lang="stylus" rel="stylesheet/stylus">
 .headpiece
   width 100%
-  height 525px
+  height 348px
   background url("../../assets/headpiece.png") no-repeat
   background-size cover cover
   position relative
   overflow hidden
   .headpieceTop
     width 100%
-    height 340px
+    height 207px
     overflow hidden
     position relative
   .headpieceBottom

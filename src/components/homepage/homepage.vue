@@ -2,7 +2,7 @@
     <div class="subject">
         <!--顶部折线图-->
         <headpiece v-if="false"></headpiece>
-        <div class="section" >
+        <div class="section">
             <!--下左折线图-->
             <div class="sectionLeft">
                 <middle v-if="time.length" :time="time" :waitingRoomPersonnels="waitingRoomPersonnels"></middle>
@@ -61,6 +61,7 @@ export default {
 <style scoped lang="stylus" rel="stylesheet/stylus">
 .subject
     width 100%
+    height 100%
     overflow hidden
     position relative
     -webkit-touch-callout none
@@ -71,13 +72,13 @@ export default {
     user-select none
     .section
       width 100%
-      height 832px
+      height 100%
       background url("../../../src/assets/bottomSide.png") no-repeat
       background-size cover
       position relative
       overflow hidden
       .sectionLeft
-        width 1330px
+        width 966px
         overflow hidden
         position relative
         height 100%

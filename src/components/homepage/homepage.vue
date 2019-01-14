@@ -1,8 +1,8 @@
 <template>
     <div class="subject">
         <!--顶部折线图-->
-        <headpiece v-if="false"></headpiece>
-        <div class="section">
+        <headpiece></headpiece>
+        <div class="section" v-if="false">
             <!--下左折线图-->
             <div class="sectionLeft">
                 <middle v-if="time.length" :time="time" :waitingRoomPersonnels="waitingRoomPersonnels"></middle>
@@ -36,10 +36,10 @@ export default {
     rightSide
   },
   created () {
-    setInterval(() => {
-      this.getData()
-    }, 60000)
-    this.getData()
+    // setInterval(() => {
+    //   this.getData()
+    // }, 60000)
+    // this.getData()
   },
   methods: {
     getData () {
@@ -78,7 +78,7 @@ export default {
       position relative
       overflow hidden
       .sectionLeft
-        width 966px
+        width 918px
         overflow hidden
         position relative
         height 100%

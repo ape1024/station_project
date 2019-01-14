@@ -2,7 +2,7 @@
     <div class="headpieceDiagram">
         <p class="headpieceDiagramP">{{headpieceText}}</p>
         <!--<div class="headpieceDiagramDiv"></div>-->
-        <div id="myChart" :style="{ width: '770px', height: '200px' }"></div>
+        <div id="myChart" :style="{ width: '750px', height: '200px' }"></div>
     </div>
 </template>
 

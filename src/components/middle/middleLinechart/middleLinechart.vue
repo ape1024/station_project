@@ -1,6 +1,6 @@
 <template>
     <div class="middleLinechart">
-        <div id="Distribution" :style="{ width: '954px', height: '235px' }"></div>
+        <div id="Distribution" :style="{ width: '920px', height: '235px' }"></div>
     </div>
 </template>
 

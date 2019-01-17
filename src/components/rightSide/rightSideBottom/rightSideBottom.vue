@@ -5,7 +5,7 @@
         </div>
         <div class="ListHeader">
             <ul class="ListHeaderUl">
-                <li class="ListHeaderli ListHeaderlitext">
+                <li class="ListHeaderli ListHeaderlitext ListHeaderliTwo">
                     <span class="ListHeaderspan">位置</span>
                 </li>
                 <li class="ListHeaderli">
@@ -25,7 +25,7 @@
         <ul class="summarizing">
             <li :key="index" v-for="(item, index) in waitingRoomWarnings" class="summarizingLi">
                 <ul class="summarizingUl">
-                    <li class="summarizingli ListHeaderlitext">
+                    <li class="summarizingli ListHeaderlitext ListHeaderliTwo">
                         <span class="ListHeaderspan">{{item.name}}</span>
                     </li>
                     <li class="summarizingli">
@@ -82,7 +82,7 @@ export default {
             position relative
             overflow hidden
             .ListHeaderli
-                width 20%
+                width 22%
                 text-align center
                 height 100%
                 float left
@@ -98,11 +98,11 @@ export default {
         height 337px
         .summarizingLi
             overflow hidden
-            border-left 3px solid #cc0001
+            border-left 3px solid rgba(255, 0, 0, .4)
             margin-top 10px
             .summarizingUl
                 float right
-                background #cc0001
+                background rgba(255, 0, 0, .4)
                 width 98%
                 font-size 12px
                 height 100%
@@ -113,7 +113,9 @@ export default {
                     font-size 12px
                     text-align center
                     line-height 12px
-                    width 20%
+                    width 22%
     .summarizing::-webkit-scrollbar
          display none
+    .ListHeaderliTwo
+       width 10%!important
 </style>

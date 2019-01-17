@@ -40,12 +40,12 @@ export default {
       let sum = 0
       arr.forEach((val, index) => {
         let coLor = ''
-        let Proportion = val / this.personnelAlarm
-        if (Proportion <= 0.7) {
+        let Proportion = val
+        if (Proportion < this.personnelAlarm[0]) {
           coLor = 'rgba(0, 255, 132, .4)'
-        } else if (Proportion > 0.7 && Proportion < 0.85) {
+        } else if (Proportion >= this.personnelAlarm[0] && Proportion < this.personnelAlarm[1]) {
           coLor = 'rgba(255, 240, 0, .4)'
-        } else if (Proportion >= 0.85 && Proportion < 1) {
+        } else if (Proportion >= this.personnelAlarm[1] && Proportion < this.personnelAlarm[2]) {
           coLor = 'rgba(255, 120, 0, .4)'
         } else {
           coLor = 'rgba(255, 0, 0, .4)'

@@ -30,8 +30,6 @@ export default {
       //     this.middleTimeArr.push(val)
       //   })
       // }
-      // console.log('/')
-      // console.log(this.middleTimeArr.length)
       let arrLength = this.middleTime.length
       if (arrLength > INTERVAL) {
         this.interval = Math.round(arrLength / INTERVAL)

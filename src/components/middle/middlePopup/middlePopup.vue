@@ -1,7 +1,7 @@
 <template>
     <div class="middlePopup">
         <img class="closeDown" src="../../../assets/closeDown.png" alt="" @click="closeDownClick">
-        <div id="mychart" :style="{ width: '960px', height: '280px' }"></div>
+        <div id="mychart" :style="{ width: '900px', height: '280px' }"></div>
     </div>
 </template>
 
@@ -42,7 +42,7 @@ export default {
         },
         grid: {
           left: '37',
-          right: '20',
+          right: '10',
           bottom: '10',
           containLabel: true
         },
@@ -86,20 +86,24 @@ export default {
             markLine: {
               data: [
                 [
-                  { name: '预警人数起点', xAxis: 0, yAxis: this.personnel.personnelAlarm, symbol: 'circle' }, { name: '预警人数终点', xAxis: this.middleTime.length - 1, yAxis: this.personnel.personnelAlarm, symbol: 'arrow' }
+                  { name: this.personnel.personnelAlarm[0], xAxis: 0, yAxis: this.personnel.personnelAlarm[0], symbol: 'circle' }, { name: '预警人数终点', xAxis: this.middleTime.length - 1, yAxis: this.personnel.personnelAlarm[0], symbol: 'arrow', lineStyle: {color: 'rgba(0, 255, 132, .75)'} }
+                ], [
+                  { name: this.personnel.personnelAlarm[1], xAxis: 0, yAxis: this.personnel.personnelAlarm[1], symbol: 'circle' }, { name: '预警人数终点', xAxis: this.middleTime.length - 1, yAxis: this.personnel.personnelAlarm[1], symbol: 'arrow', lineStyle: {color: 'rgba(255, 120, 0, .75)'} }
+                ],
+                [
+                  { name: this.personnel.personnelAlarm[2], xAxis: 0, yAxis: this.personnel.personnelAlarm[2], symbol: 'circle' }, { name: '预警人数终点', xAxis: this.middleTime.length - 1, yAxis: this.personnel.personnelAlarm[2], symbol: 'arrow', lineStyle: {color: 'rgba(255, 0, 0, .75)'} }
                 ]
               ],
               label: {
                 normal: {
                   show: true,
-                  position: 'middle',
-                  formatter: '预警线'
+                  position: 'middle'
                 }
               },
               lineStyle: {
                 normal: {
                   type: 'solid',
-                  color: '#cc0001'
+                  color: 'rgba(255, 0, 0)'
                 }
               }
             }

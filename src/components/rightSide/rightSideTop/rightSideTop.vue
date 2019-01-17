@@ -20,19 +20,19 @@
             </ul>
         </div>
         <ul class="summarizing">
-            <li class="summarizingLi">
+            <li class="summarizingLi" :key="index" v-for="(item, index) in warning">
                 <ul class="summarizingUl">
                     <li class="summarizingli ListHeaderlitext">
-                        <span class="ListHeaderspan">{{warning.customized}}</span>
+                        <span class="ListHeaderspan">{{item.customized}}</span>
                     </li>
                     <li class="summarizingli">
-                        <span class="ListHeaderspan">{{warning.warning}}</span>
+                        <span class="ListHeaderspan">{{item.warning}}</span>
                     </li>
                     <li class="summarizingli">
-                        <span class="ListHeaderspan">{{warning.warningTime}}</span>
+                        <span class="ListHeaderspan">{{item.warningTime}}</span>
                     </li>
                     <li class="summarizingli">
-                        <span class="ListHeaderspan">{{warning.proportion}}</span>
+                        <span class="ListHeaderspan">{{item.proportion}}</span>
                     </li>
                 </ul>
             </li>
@@ -96,12 +96,13 @@ export default {
             width 100%
             height 120px
             .summarizingLi
-               border-left 3px solid #EE9D29
+               margin-bottom 10px
+               border-left 3px solid rgba(255, 240, 0, .4)
                overflow hidden
                .summarizingUl
                    float right
                    width 98%
-                   background #EE9D29
+                   background rgba(255, 240, 0, .4)
                    height 100%
                    position relative
                    overflow hidden

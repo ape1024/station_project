@@ -1,8 +1,8 @@
 <template>
     <div class="subject">
         <!--顶部折线图-->
-        <headpiece></headpiece>
-        <div class="section" v-if="false">
+        <headpiece v-if="false"></headpiece>
+        <div class="section">
             <!--下左折线图-->
             <div class="sectionLeft">
                 <middle v-if="time.length" :time="time" :waitingRoomPersonnels="waitingRoomPersonnels"></middle>
@@ -36,10 +36,10 @@ export default {
     rightSide
   },
   created () {
-    // setInterval(() => {
-    //   this.getData()
-    // }, 60000)
-    // this.getData()
+    setInterval(() => {
+      this.getData()
+    }, 60000)
+    this.getData()
   },
   methods: {
     getData () {
@@ -49,7 +49,7 @@ export default {
         //  canvas需要的数据
         this.waitingRoomPersonnels = data.data.data.waitingRoomPersonnels
         //  车站预警信息
-        this.warning = data.data.data.warning
+        this.warning = data.data.data.warnings
         //  候车室预警信息
         this.waitingRoomWarnings = data.data.data.waitingRoomWarnings
       })

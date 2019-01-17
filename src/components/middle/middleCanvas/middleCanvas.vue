@@ -57,7 +57,6 @@ export default {
     }
   },
   mounted () {
-
   },
   methods: {
     ergodicArr () {

@@ -1,7 +1,7 @@
 <template>
     <div class="middlePopup">
         <img class="closeDown" src="../../../assets/closeDown.png" alt="" @click="closeDownClick">
-        <div id="mychart" :style="{ width: '900px', height: '280px' }"></div>
+        <div id="mychart" :style="{ width: '1260px', height: '340px' }"></div>
     </div>
 </template>
 
@@ -42,6 +42,7 @@ export default {
         },
         grid: {
           left: '37',
+          top: '50',
           right: '10',
           bottom: '10',
           containLabel: true
@@ -163,4 +164,6 @@ export default {
         z-index 1111111
         cursor pointer
         right 10px
+  #mychart
+    margin-top 20px
 </style>

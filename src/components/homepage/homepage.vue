@@ -2,6 +2,7 @@
     <div class="subject">
         <!--顶部折线图-->
         <headpiece v-if="false"></headpiece>
+        <p class="sectionP"> 北京西站站内人数分布图</p>
         <div class="section">
             <!--下左折线图-->
             <div class="sectionLeft">
@@ -36,10 +37,10 @@ export default {
     rightSide
   },
   created () {
+    this.getData()
     setInterval(() => {
       this.getData()
     }, 60000)
-    this.getData()
   },
   methods: {
     getData () {
@@ -62,23 +63,17 @@ export default {
 .subject
     width 100%
     height 100%
+    background url("../../../src/assets/bottomSide.png") no-repeat
     overflow hidden
     position relative
-    -webkit-touch-callout none
-    -webkit-user-select none
-    -khtml-user-select none
-    -moz-user-select none
-    -ms-user-select none
     user-select none
     .section
-      width 100%
-      height 100%
-      background url("../../../src/assets/bottomSide.png") no-repeat
+      margin 20px
       background-size cover
       position relative
       overflow hidden
       .sectionLeft
-        width 918px
+        width 1300px
         overflow hidden
         position relative
         height 100%
@@ -87,4 +82,10 @@ export default {
         overflow hidden
         position relative
         float right
+  .sectionP
+    position absolute
+    left 20px
+    font-size 20px
+    color #fff
+    top 10px
 </style>

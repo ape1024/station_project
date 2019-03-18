@@ -21,7 +21,7 @@ html, body
   height $height-total
   overflow hidden
   position relative
-  background url("../src/assets/bottom_background.png") no-repeat
+  background #071321
 #app
   width $width-total
   height 100%

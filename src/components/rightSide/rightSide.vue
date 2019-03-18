@@ -24,8 +24,8 @@ export default {
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
     .rightSide
-       width 260px
-       margin 10px 10px 0 0
+       width 520px
+       margin 50px 0 0 0
        font-size 12px
        position relative
        overflow hidden

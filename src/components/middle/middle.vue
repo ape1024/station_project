@@ -38,10 +38,11 @@ export default {
       .middleLinechart
          width 100%
          margin-bottom 10px
+         margin-top 10px
          overflow hidden
          position relative
       .middleCanvas
-          width 100%
+          width 1295px
           overflow hidden
           position relative
 </style>

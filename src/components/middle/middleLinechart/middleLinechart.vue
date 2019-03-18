@@ -1,6 +1,6 @@
 <template>
     <div class="middleLinechart">
-        <div id="Distribution" :style="{ width: '920px', height: '235px' }"></div>
+        <div id="Distribution" :style="{ width: '1300px', height: '450px' }"></div>
     </div>
 </template>
 
@@ -15,7 +15,9 @@ export default {
       arrdata: [],
       interval: 0,
       dataBrokenNumber: [],
-      middleTimeArr: []
+      middleTimeArr: [],
+      //  总和
+      summation: []
     }
   },
   mounted () {
@@ -50,19 +52,16 @@ export default {
             fontSize: '16'
           }
         },
+        grid: {
+          left: '8',
+          right: '5',
+          bottom: '0',
+          top: '50',
+          containLabel: true
+        },
         tooltip: {
           trigger: 'axis',
           show: false
-        },
-        legend: {
-          show: false
-        },
-        grid: {
-          left: '14',
-          right: '4',
-          bottom: '0',
-          top: '38',
-          containLabel: true
         },
         xAxis: [
           {
@@ -83,6 +82,9 @@ export default {
             boundaryGap: true,
             axisLabel: {
               color: '#fff'
+            },
+            splitLine: {
+              show: true
             }
           }
         ],
@@ -121,29 +123,95 @@ export default {
     },
     assignment () {
       //  this.waitingRoom.forEach((val, index) => {
-      this.waitingRoom.forEach((val, index) => {
-        let obj = {
-          name: `${val.name}`,
-          symbol: 'none',
-          smooth: true,
-          type: 'line',
-          stack: '总量',
-          color: val.color,
-          data: val.personnel,
-          areaStyle: {normal: {}},
-          label: {
-            normal: {
-              show: false,
-              position: 'top'
+      let myDate = new Date()
+      let hours = myDate.getHours()
+      let minutes = myDate.getMinutes()
+      if (hours < 10) {
+        hours = `0${hours}`
+      }
+      if (minutes > 30 || minutes === 30) {
+        minutes = 30
+      } else if (minutes < 30) {
+        minutes = '00'
+      }
+      let currentdate = `${hours}:${minutes}`
+      //  获取当前最大值
+      // let arr = [100, 2, 3, 4, 200, 400, 500, 6000, 700]
+      // let max = this.summation.sort((a, b) => {
+      //   return b - a
+      // })[0]
+      let obj = {
+        name: `客流量人数总和`,
+        smooth: true,
+        type: 'line',
+        symbol: 'circle',
+        symbolSize: 10,
+        color: '#fff',
+        itemStyle: {
+          normal: {
+            lineStyle: {
+              width: 6,
+              color: '#29aef1'
             }
           }
+        },
+        data: this.summation,
+        // data: arr,
+        label: {
+          normal: {
+            show: false,
+            position: 'top'
+          }
         }
-        this.dataBrokenNumber.push(obj)
-      })
+      }
+      let objTwo = {
+        type: 'line',
+        color: '#ff504b',
+        smooth: false,
+        markLine: {
+          itemStyle: {
+            normal: {
+              lineStyle: {
+                width: 1,
+                type: 'solid'
+              }
+            }
+          },
+          symbol: 'none',
+          data: [{
+            xAxis: currentdate
+          }]
+        }
+      }
+      this.dataBrokenNumber = []
+      this.dataBrokenNumber.push(obj)
+      this.dataBrokenNumber.push(objTwo)
       this.Initialization()
+    },
+    //  计算总数
+    calculations () {
+      const arr = this.waitingRoom.map(t => {
+        return t.personnel
+      })
+      const currentArr = []
+      for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr[i].length; j++) {
+          currentArr[j] = currentArr[j] === undefined ? (0 + arr[i][j]) : (currentArr[j] + arr[i][j])
+        }
+      }
+      this.summation = currentArr
     }
   },
   created () {
+    //  数据叠加 计算出总和
+    this.calculations()
+  },
+  watch: {
+    waitingRoom () {
+      this.calculations()
+      this.assignment()
+      this.calculations()
+    }
   }
 }
 </script>

@@ -6,6 +6,15 @@
                     <assemblyCanvas :array="item.personnel" :textData="item" :arrarIndex="index" :diagramHeight="diagramUlHeight" :personnelAlarm="item.personnelAlarm"></assemblyCanvas>
                 </li>
             </ul>
+          <div :style="{ left: markerLineLeft, width: markerLineWdith }" class="markerLine">
+            <div class="markerLineLeftDiv" :style="{ left: markerLineLeftDivLeft }">
+            </div>
+            <ul class="markerLineUl" :style="{ left: markerLineUlLeft }">
+              <li  :key="index" v-for="(data, index) in markerLineLeftData" class="markerLineLi">
+                {{data}}
+              </li>
+            </ul>
+          </div>
         </div>
         <!--按钮 暂时不要 后期商榷-->
         <div class="fastener" style="display: none">
@@ -53,7 +62,12 @@ export default {
       arr: [],
       middlePopupBoer: false,
       diagramUlHeight: 0,
-      personnel: []
+      personnel: [],
+      markerLineLeft: '',
+      markerLineLeftData: [],
+      markerLineLeftDivLeft: '0px',
+      markerLineUlLeft: '11px',
+      markerLineWdith: '30px'
     }
   },
   mounted () {
@@ -80,19 +94,73 @@ export default {
       //  首先获取ul的高度 除以
       let heightCss = 456
       this.diagramUlHeight = heightCss / this.caption.length - 2
+    },
+    update () {
+      //  获取当前时间 , 拿到当前时间的的index 然后通过,index 找到当前的位置
+      let myDate = new Date()
+      let hours = myDate.getHours()
+      let minutes = myDate.getMinutes()
+
+      if (hours < 10) {
+        hours = `0${hours}`
+      }
+      if (minutes > 30 || minutes === 30) {
+        minutes = 30
+      } else if (minutes < 30) {
+        minutes = '00'
+      }
+      let currentdate = `${hours}:${minutes}`
+      // let currentdate = `22:00`
+      let indexdate = ''
+      this.middleTime.forEach((val, index) => {
+        if (val === currentdate) {
+          indexdate = index
+        }
+      })
+      // let middleTime = this.middleTime.length--
+      this.$nextTick(function () {
+        this.markerLineLeft = (this.$refs.monthPie.clientWidth - 50) / (this.middleTime.length - 1) * indexdate + 50 + 'px'
+        //  判断当先红线数字 是左还是在右
+        let markerLineLeftDataTwo = [...this.markerLineLeftData]
+        let max = markerLineLeftDataTwo.sort((a, b) => {
+          return b - a
+        })[0]
+        max = `${max}`
+        //  单个数字像素为9.5
+        //  线条本身1px 距离数字 10px 固加 11
+        let txtwidth = max.length * 9.5 + 11
+        this.markerLineWdith = txtwidth + 'px'
+        let markerLineLeft = (this.$refs.monthPie.clientWidth - 50) / (this.middleTime.length - 1) * indexdate + 50
+        //  预留右侧 20px
+        if ((markerLineLeft + txtwidth + 20) > this.$refs.monthPie.clientWidth) {
+          this.markerLineUlLeft = 0
+          this.markerLineLeftDivLeft = txtwidth - 1 + 'px'
+          this.markerLineLeft = markerLineLeft - txtwidth + 'px'
+        }
+      })
+      let markerLineLeftDataArr = []
+      this.caption.forEach((val) => {
+        val.personnel.forEach((data, index) => {
+          if (index === indexdate) {
+            markerLineLeftDataArr.push(data)
+          }
+        })
+      })
+      this.markerLineLeftData = markerLineLeftDataArr
     }
   },
-  created () {
-    this.caption = this.waitingRoomPersonnels
-    this.caption.forEach((val, index) => {
-      val.color = this.captionColor[index]
-    })
-    this.ergodicArr()
-    //  传一个值到子组件 来设置 每一个li 的高度
-    //  目前没有接口, 然后 随机十三个
-    //  this.diagramUlHeight
-    //  总体高度 280 可以再商榷
-    this.setHeight()
+  watch: {
+    waitingRoomPersonnels: {
+      handler: function (data) {
+        this.caption = data
+        this.caption.forEach((val, index) => {
+          val.color = this.captionColor[index]
+        })
+        this.setHeight()
+        this.update()
+      },
+      immediate: true
+    }
   }
 }
 </script>
@@ -113,7 +181,7 @@ export default {
              box-sizing border-box
              overflow hidden
              position relative
-             height 280px
+             height 386px
              width 100%
              .diagramLi
                cursor pointer
@@ -144,4 +212,34 @@ export default {
             right 0
             background rgba(20, 40, 86,.94)
             overflow hidden
+  .markerLine
+    position absolute
+    top 0
+    height  calc(100% - 2px)
+    overflow hidden
+  .markerLineLeftDiv
+    position absolute
+    top 0
+    width 1px
+    height 100%
+    background #ff504b
+  .markerLineUl
+    position absolute
+    top 0
+    height calc(100% + 3px)
+    display flex
+    flex-direction column
+    align-content flex-start
+    box-sizing border-box
+    overflow hidden
+  .markerLineLi
+      position relative
+      overflow hidden
+      display flex
+      justify-content center
+      align-items Center
+      box-sizing border-box
+      margin-bottom 2px
+      height 100%
+      width 100%
 </style>
